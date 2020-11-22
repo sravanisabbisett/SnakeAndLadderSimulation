@@ -8,6 +8,7 @@ namespace SnakeAnDLadder
         {
             Console.WriteLine("Snake And Ladder simulation");
             SnakeAndLadder snake = new SnakeAndLadder();
+            snake.StartGame();
             Console.ReadKey();
         }
     }

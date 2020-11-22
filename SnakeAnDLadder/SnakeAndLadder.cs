@@ -6,6 +6,6 @@ namespace SnakeAnDLadder
 {
     class SnakeAndLadder
     {
-
+        int playerPosition = 0;
     }
 }

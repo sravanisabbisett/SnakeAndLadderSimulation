@@ -38,7 +38,7 @@ namespace SnakeAnDLadder
                     if (player2Position == WIN_POINT)
                     {
                         Console.WriteLine("player 2 Wins");
-                        Console.WriteLine("Die rolled " + player2DiceCount+ " times to win");
+                        Console.WriteLine("Die rolled " + player2DiceCount + " times to win");
                         break;
                     }
                 }
@@ -46,24 +46,23 @@ namespace SnakeAnDLadder
             }
         }
 
-        public void DiceCountAndPosition(int dicecount, int playerPosition,int dicevalue,int number)
-        {
-            dicecount++;
-            playerPosition = CalculatePlayerPosition(playerPosition, dicevalue);
-            Console.WriteLine("player" + number + " position" + playerPosition);
-            if (playerPosition == WIN_POINT)
-            {
-                Console.WriteLine("Player" + number + "wins");
-                Console.WriteLine("Die rolled" + dicecount + "times to wins");
-                
-            }
-        }
 
+        /// <summary>
+        /// Method return a number from 1 to 6
+        /// </summary>
+        /// <returns></returns>
         public int RollDie()
         {
             return random.Next(1, 7); 
         }
 
+        /// <summary>
+        /// Calculates the player position.
+        /// </summary>
+        /// <param name="player">The player.</param>
+        /// <param name="diceValue">The dice value.</param>
+        /// <returns></returns>
+       
         public int CalculatePlayerPosition(int player,int diceValue)
         {
             int checkPlay;

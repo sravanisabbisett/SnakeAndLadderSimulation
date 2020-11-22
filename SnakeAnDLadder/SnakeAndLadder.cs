@@ -8,6 +8,7 @@ namespace SnakeAnDLadder
     {
         Random random = new Random();
         int playerPosition = 0;
+        int WIN_POINT = 100;
 
         public int RollDie()
         {
@@ -31,6 +32,10 @@ namespace SnakeAnDLadder
                     Console.WriteLine("Snake");
                     player = player - diceValue;
                     break;
+            }
+            if (player < 0)
+            {
+                player = 0;
             }
             return player;
         }

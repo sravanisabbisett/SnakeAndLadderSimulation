@@ -11,20 +11,51 @@ namespace SnakeAnDLadder
 
         public void StartGame()
         {
-            int playerPosition = 0, dicevalue = 0;
-            int playerDiceCount = 0;
+            int player1Position = 0, dicevalue = 0;
+            int player1DiceCount = 0;
+            int currentPlayer = -1;
+            int player2Position = 0, player2DiceCount = 0;
             while (true)
             {
                 dicevalue = RollDie();
-                playerDiceCount++;
-                playerPosition = CalculatePlayerPosition(playerPosition, dicevalue);
-                Console.WriteLine("Player position" + playerPosition);
-                if (playerPosition == WIN_POINT)
+                if (currentPlayer == -1)
                 {
-                    Console.WriteLine("player 1 wins");
-                    Console.WriteLine("Die rolled " + playerDiceCount + " times to win");
-                    break;
+                    player1DiceCount++;
+                    player1Position = CalculatePlayerPosition(player1Position, dicevalue);
+                    Console.WriteLine("Player 1 Position" + player1Position);
+                    if (player1Position == WIN_POINT)
+                    {
+                        Console.WriteLine("player 1 wins");
+                        Console.WriteLine("Die rolled " + player1DiceCount + " times to win");
+                        break;
+                    }
                 }
+                else
+                {
+                    player2DiceCount++;
+                    player2Position = CalculatePlayerPosition(player2Position, dicevalue);
+                    Console.WriteLine("Player2position" + player2Position);
+                    if (player2Position == WIN_POINT)
+                    {
+                        Console.WriteLine("player 2 Wins");
+                        Console.WriteLine("Die rolled " + player2DiceCount+ " times to win");
+                        break;
+                    }
+                }
+                currentPlayer = -(currentPlayer);
+            }
+        }
+
+        public void DiceCountAndPosition(int dicecount, int playerPosition,int dicevalue,int number)
+        {
+            dicecount++;
+            playerPosition = CalculatePlayerPosition(playerPosition, dicevalue);
+            Console.WriteLine("player" + number + " position" + playerPosition);
+            if (playerPosition == WIN_POINT)
+            {
+                Console.WriteLine("Player" + number + "wins");
+                Console.WriteLine("Die rolled" + dicecount + "times to wins");
+                
             }
         }
 
@@ -44,6 +75,9 @@ namespace SnakeAnDLadder
                     break;
                 case 1:
                     Console.WriteLine("ladder");
+                    player = player + diceValue;
+                    Console.WriteLine("Congrats You got ladder roll die again");
+                    diceValue = RollDie();
                     player = player + diceValue;
                     break;
                 default:
